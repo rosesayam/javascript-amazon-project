@@ -45,9 +45,26 @@
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add" data-product-id="${product.id}" >
             Add to Cart
           </button>
         </div>`;})
 
         document.querySelector('.productjs').innerHTML=productshtml;
+        document.querySelectorAll('.js-add').forEach((button) => {
+            button.addEventListener('click', () => {
+                const productId = button.dataset.productId;
+                let matchingItem;
+                cart.forEach((item) => {
+                    if (productId === item.id) {
+                        matchingItem = item;
+                    }});
+                if (matchingItem) {
+                    matchingItem.quantity++;
+                } else {
+                cart.push({
+                    id: productId,
+                    quantity: 1
+                });
+        }});
+        });

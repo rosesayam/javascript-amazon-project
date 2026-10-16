@@ -66,5 +66,11 @@
                     id: productId,
                     quantity: 1
                 });
-        }});
+            }  
+                let cartquantity = 0;
+                cart.forEach((item) => {
+                     cartquantity += item.quantity;
+            });
+            document.querySelector('.js-cart-quantity').innerHTML = cartquantity;
         });
+          });

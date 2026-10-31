@@ -5,6 +5,22 @@ import { loadProducts,loadProductsFetch } from '../data/products.js';
 //import '../data/backend-practice.js';
 
 
+async function loadPage(){
+    await loadProductsFetch();
+
+    await new Promise((resolve)=>{
+     loadProducts(()=>{
+     resolve();
+   });
+})
+
+    renderOrderSummary();
+    renderPaymentSummary();
+    
+}
+loadPage(); 
+
+/*
 Promise.all([
     loadProductsFetch(),
     new Promise((resolve)=>{
@@ -15,7 +31,7 @@ Promise.all([
 ]).then(()=>{
     renderOrderSummary();
     renderPaymentSummary();
-});
+});*/
 
 
 /*
